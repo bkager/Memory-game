@@ -1,0 +1,19 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  margin: 5px;
+  border-style: solid;
+  border-radius: 1px;
+  border-color: #58a7ff;
+  border-radius: 10px;
+}
+
+#dashboard {
+  font-size: 16px;
+  color: #36f1ff;
+}
