@@ -1,0 +1,51 @@
+import React from "react";
+
+const themes = {
+  Tropical: [
+    "./images/tropical/waves.png",
+    { icon: "/images/tropical/bird-of-paradise.png", alt: "Bird of Paradise" },
+    { icon: "/images/tropical/coconut-drink.png", alt: "coconut drink" },
+    { icon: "/images/tropical/crab.png", alt: "crab" },
+    { icon: "/images/tropical/jellyfish.png", alt: "jellyfish" },
+    { icon: "/images/tropical/parrot.png", alt: "parrot" },
+    { icon: "/images/tropical/sea-turtle.png", alt: "sea turtle" },
+    { icon: "/images/tropical/butterfly.png", alt: "butterfly" },
+    { icon: "/images/tropical/dragon-fruit.png", alt: "dragon fruit" },
+    { icon: "/images/tropical/flamingo.png", alt: "flamingo" },
+    { icon: "/images/tropical/flower-necklace.png", alt: "flower necklace" },
+    { icon: "/images/tropical/island.png", alt: "island" },
+    { icon: "/images/tropical/lime.png", alt: "lime" },
+    { icon: "/images/tropical/papaya.png", alt: "papaya" },
+    { icon: "/images/tropical/pineapple.png", alt: "pineapple" },
+    { icon: "/images/tropical/sea.png", alt: "sea" },
+    { icon: "/images/tropical/snorkel.png", alt: "snorkel" },
+    { icon: "/images/tropical/starfish.png", alt: "starfish" },
+    { icon: "/images/tropical/tropical-fish.png", alt: "tropical fish" },
+  ],
+  Halloween: [
+    "./images/halloween/glitter.png",
+    { icon: "/images/halloween/bat.png", alt: "bat" },
+    { icon: "/images/halloween/black-cat.png", alt: "black cat" },
+    { icon: "/images/halloween/book.png", alt: "book" },
+    { icon: "/images/halloween/candy-corn.png", alt: "candy corn" },
+    {
+      icon: "/images/halloween/caramelized-apple.png",
+      alt: "caramelized apple",
+    },
+    { icon: "/images/halloween/ghost-tree.png", alt: "ghost tree" },
+    { icon: "/images/halloween/ghost.png", alt: "ghost" },
+    { icon: "/images/halloween/halloween-candy-1.png", alt: "gummy worms" },
+    { icon: "/images/halloween/lollipop.png", alt: "lollipop" },
+    { icon: "/images/halloween/monster.png", alt: "Frankenstein's monster" },
+    { icon: "/images/halloween/moon.png", alt: "moon" },
+    { icon: "/images/halloween/potion.png", alt: "potion" },
+    { icon: "/images/halloween/pumpkin.png", alt: "jack o' lantern" },
+    { icon: "/images/halloween/skull.png", alt: "skull" },
+    { icon: "/images/halloween/spider.png", alt: "spider" },
+    { icon: "/images/halloween/tombstone.png", alt: "tombstone" },
+    { icon: "/images/halloween/werewolf.png", alt: "werewolf" },
+    { icon: "/images/halloween/witch-hat.png", alt: "witch-hat" },
+  ],
+};
+
+export default themes;

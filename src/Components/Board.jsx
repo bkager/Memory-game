@@ -1,30 +1,21 @@
 import React, { useState } from "react";
 import Card from "./Card";
+import themes from "./CardSets";
+import ThemeButton from "./ThemeButton";
 
+let clickCount = 0;
+let prevCardUp = "";
+let prevCardNums = [];
+let match = false;
+let rounds = 0;
+
+console.log("Themes : ", themes["Tropical"]);
 //Unshuffled array of image data: this is static data and so stays outside of the function component
-const unshuffledImages = [
-  { icon: "/images/bird-of-paradise.png", alt: "Bird of Paradise" },
-  { icon: "/images/coconut-drink.png", alt: "coconut drink" },
-  { icon: "/images/crab.png", alt: "crab" },
-  { icon: "/images/jellyfish.png", alt: "jellyfish" },
-  { icon: "/images/parrot.png", alt: "parrot" },
-  { icon: "/images/sea-turtle.png", alt: "sea turtle" },
-  { icon: "/images/butterfly.png", alt: "butterfly" },
-  { icon: "/images/dragon-fruit.png", alt: "dragon fruit" },
-  { icon: "/images/flamingo.png", alt: "flamingo" },
-  { icon: "/images/flower-necklace.png", alt: "flower necklace" },
-  { icon: "/images/island.png", alt: "island" },
-  { icon: "/images/lime.png", alt: "lime" },
-  { icon: "/images/papaya.png", alt: "papaya" },
-  { icon: "/images/pineapple.png", alt: "pineapple" },
-  { icon: "/images/sea.png", alt: "sea" },
-  { icon: "/images/snorkel.png", alt: "snorkel" },
-  { icon: "/images/starfish.png", alt: "starfish" },
-  { icon: "/images/tropical-fish.png", alt: "tropical fish" },
-];
+// const unshuffledImages = themes["Tropical"];
 
 //shuffleImages takes the array of unshuffled images and adds two copies of each in random order to a new array,
 function shuffleImages(array) {
+  array = array.slice(1);
   const unshuffled = [...array, ...array];
   let results = [];
   console.log("Unshuffled at start of function: ", unshuffled);
@@ -40,17 +31,16 @@ function shuffleImages(array) {
 
 //Invokes shuffleCards to create an array of shuffled image data that can be used to create cards
 
-const shuffledImages = shuffleImages(unshuffledImages);
-
-let clickCount = 0;
-let prevCardUp = "";
-let prevCardNums = [];
-let match = false;
-let rounds = 0;
-
 function Board() {
-  let initialSides = Array(shuffledImages.length).fill("back");
+  let [theme, setTheme] = useState("Tropical");
+  let unshuffledImages = themes[theme];
+  //const shuffledImages = [];
 
+  let [shuffledImages, setShuffledImages] = useState(
+    shuffleImages(unshuffledImages)
+  );
+
+  let initialSides = Array(shuffledImages.length).fill("back");
   let [sides, setSides] = useState(initialSides);
 
   function done() {
@@ -60,6 +50,9 @@ function Board() {
   let isDone = done();
 
   function findStatus() {
+    if (rounds <= 1 && clickCount < 2) {
+      return "";
+    }
     if (isDone) {
       return "Success! You found all matches!";
     } else if (!match) {
@@ -159,11 +152,34 @@ function Board() {
   //Generate an array of <Card /> components from shuffled array, giving each one an image icon and a clickHandler; done once at start of round
   //  individual cards re-render as clicked
 
+  //Generate array of ThemeButton components to allow user to change card theme
+  let themeNames = Object.keys(themes);
+
+  function themeChanger(themeName) {
+    console.log("I clicked a theme button");
+    if (theme === themeName) {
+      return;
+    }
+    setTheme(themeName);
+    setShuffledImages(() => shuffleImages(unshuffledImages));
+  }
+
+  const themeButtonArray = themeNames.map((themeName, i) => {
+    return (
+      <ThemeButton
+        themeName={themeName}
+        key={i}
+        clickHandler={() => themeChanger(themeName)}
+      />
+    );
+  });
+
   const cardArray = shuffledImages.map((image, i) => {
     return (
       <Card
         side={sides[i]} //"back" or "front"
         picture={image.icon}
+        backPattern={unshuffledImages[0]}
         alt={image.alt}
         key={i}
         onClick={() => handleClick(i, image.alt)}
@@ -178,6 +194,7 @@ function Board() {
         <h1>Rounds: {rounds}</h1>
       </div>
       <div>{cardArray}</div>
+      <div>{themeButtonArray}</div>
     </div>
   );
 }

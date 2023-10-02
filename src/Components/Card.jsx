@@ -3,7 +3,7 @@ import React from "react";
 function Card(props) {
   let imageToShow = "";
   if (props.side === "back") {
-    imageToShow = "/images/waves.png";
+    imageToShow = props.backPattern;
   } else if (props.side === "front") {
     imageToShow = props.picture;
   }
