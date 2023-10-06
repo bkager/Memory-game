@@ -1,27 +1,69 @@
-Tropical theme
+# Memory Game
 
-<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+A simple singleplayer memory challenge.
 
-https://www.flaticon.com/packs/tropical-90
+## Features
 
-<a href="https://www.flaticon.com/free-icons/waves" title="waves icons">Waves icons created by Freepik - Flaticon</a>
+- Singleplayer card matching memory game
+- Keeps track of number of moves
+- Multiple visual themes
 
-Halloween theme
+## How to Use
 
-<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+Download the Github repo. From the project's root, run:
 
-Bugs:
--Rendering issue when changing themes
+```
+npm install
+npm run dev
+```
 
-Ideas:
--Improve CSS
+## Technologies
 
-- add grid for cards
-- improve fonts
-  -Button to reset board
-  -Bomb mode: if you've turned a bomb card over once, the next time you flip it it explodes
-  -Button to flip all cards, marking ones you didn't get
-  -Two-player mode
-  -Online mode
+A Vite React app.
 
-  -Button to toggle different card image sets (Halloween, other themes, etc. )
+## To Do
+
+### Bugs
+
+- Fix rendering issue when changing themes
+
+### New Features and Improvements
+
+- Improve CSS
+  - add grid for cards
+  - improve fonts
+- add TypeScript
+- Button to reset board
+- Bomb mode: Two cards picturing bombs are included. If you've turned a bomb card over once, the next time you flip it it explodes. Game over/lose points.
+- Button to flip all cards, marking ones you didn't get
+- Two-player mode
+- Online mode
+- Fix linting issues in markdown
+
+### Changelog
+
+- Added button to toggle different themes for cards
+- Added Halloween theme
+- Added full Readme file
+
+## Attributions
+
+All graphics are from [Flaticon](https://www.flaticon.com/).
+
+### Tropical theme
+
+All icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+
+### Halloween theme
+
+All icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+
+## License
+
+Copyright 2023 Britta Ager
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
