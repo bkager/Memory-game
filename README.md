@@ -4,7 +4,7 @@ A simple singleplayer memory challenge.
 
 ## Features
 
-- Singleplayer card matching memory game
+- Singleplayer card-matching memory game
 - Keeps track of number of moves
 - Multiple visual themes
 
@@ -12,10 +12,12 @@ A simple singleplayer memory challenge.
 
 Download the Github repo. From the project's root, run:
 
-```
+```javascript
 npm install
 npm run dev
 ```
+
+Game will run in browser.
 
 ## Technologies
 
@@ -44,7 +46,7 @@ A Vite React app.
 
 - Added button to toggle different themes for cards
 - Added Halloween theme
-- Added full Readme file
+- Organized/expanded Readme file
 
 ## Attributions
 
@@ -52,11 +54,11 @@ All graphics are from [Flaticon](https://www.flaticon.com/).
 
 ### Tropical theme
 
-All icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.flaticon.com/).
 
 ### Halloween theme
 
-All icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.flaticon.com/).
 
 ## License
 
