@@ -62,6 +62,14 @@ All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.
 
 All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.flaticon.com/).
 
+### Bakery theme
+
+All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.flaticon.com/).
+
+### Space theme
+
+All icons made by [Freepik](https://www.freepik.com)from [Flaticon](https://www.flaticon.com/).
+
 ## License
 
 Copyright 2023 Britta Ager

@@ -1,8 +1,11 @@
+import ResetButton from "./ResetButton";
+
 function Dashboard ({rounds, status}) {
   return (
     <div id="dashboard">
-      <p>Rounds: {rounds}</p>
-      <p>{status}</p>
+        <button>Rounds: {rounds}</button>
+        <button>{status}</button>
+        <ResetButton />
     </div>
   )
 }
