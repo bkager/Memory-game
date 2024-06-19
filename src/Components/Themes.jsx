@@ -1,6 +1,6 @@
 
 const themes = {
-  tropical: [
+  Tropical: [
     "./images/tropical/waves.png",
     { icon: "/images/tropical/bird-of-paradise.png", alt: "Bird of Paradise" },
     { icon: "/images/tropical/butterfly.png", alt: "butterfly" },
@@ -21,7 +21,7 @@ const themes = {
     { icon: "/images/tropical/starfish.png", alt: "starfish" },
     { icon: "/images/tropical/tropical-fish.png", alt: "tropical fish" },
   ],
-  halloween: [
+  Halloween: [
     "./images/halloween/glitter.png",
     { icon: "/images/halloween/bat.png", alt: "bat" },
     { icon: "/images/halloween/black-cat.png", alt: "black cat" },
@@ -45,7 +45,7 @@ const themes = {
     { icon: "/images/halloween/werewolf.png", alt: "werewolf" },
     { icon: "/images/halloween/witch-hat.png", alt: "witch-hat" },
   ],
-  space: [
+  Space: [
     "/images/space/stars.png",
     { icon: "/images/space/alien.png", alt: "alien" },
     { icon: "/images/space/astronaut.png", alt: "astronaut" },
@@ -66,7 +66,7 @@ const themes = {
     { icon: "/images/space/jupiter.png", alt: "jupiter" },
     { icon: "/images/space/ufo.png", alt: "ufo" }
   ],
-  bakery: [
+  Bakery: [
     "public/images/bakery/roll-out.png",
     { icon: "/images/bakery/biscuit.png", alt: "biscuit" },
     { icon: "/images/bakery/bread.png", alt: "bread" },

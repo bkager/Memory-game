@@ -16,7 +16,7 @@ let rounds = 0;
 function Board() {
   //Theme is the chosen set of card images, corresponding to the keys in the themes object. 
 
-  let [theme, setTheme] = useState(() => "tropical");
+  let [theme, setTheme] = useState(() => "Tropical");
  
   // unshuffledNums contains each number 1-18 twice (36 numbers total). These are the index numbers of the card images in the array of images for each theme. Each number occurs twice in order to add a matching pair of each image to the game. Index numbers start from 1 because the first image in the array for each theme is the back-of-card pattern. 
 
@@ -81,14 +81,12 @@ function Board() {
   const handleCardClick = (i, alt) => {
     clickCount++;
     let newSides = sides.slice();
-    console.log("Clickcount: ", clickCount);
 
     if (clickCount === 1) {
       rounds++;
       newSides[i] = "front";
       prevCardUp = alt;
       prevCardNums.push(i);
-      console.log(prevCardUp, prevCardNums);
       return setSides(() => newSides);
     }
 
@@ -96,12 +94,10 @@ function Board() {
       if (sides[i] === "front") {
         clickCount = 1;
         rounds++;
-        console.log("Clickcount: ", clickCount);
         return;
       }
       newSides[i] = "front";
       prevCardNums.push(i);
-      console.log(prevCardUp, prevCardNums);
       if (alt === prevCardUp) {
         match = true;
       } else {
@@ -117,7 +113,6 @@ function Board() {
         newSides[j] = "back";
         newSides[k] = "back";
         clickCount = 0;
-        console.log("Clickcount: ", clickCount);
         prevCardUp = "";
         let tempCardNums = [...prevCardNums];
         prevCardNums = [];
@@ -131,18 +126,15 @@ function Board() {
         } else {
           clickCount = 1;
           rounds++;
-          console.log("Clickcount: ", clickCount);
           newSides[i] = "front";
           prevCardUp = alt;
           prevCardNums.push(i);
-          console.log(prevCardUp, prevCardNums);
           return setSides(() => newSides);
         }
       }
 
       if (match) {
         clickCount = 0;
-        console.log("Clickcount: ", clickCount);
         prevCardUp = "";
         prevCardNums = [];
 
@@ -151,12 +143,10 @@ function Board() {
         } else {
           clickCount = 1;
           rounds++;
-          console.log("Clickcount: ", clickCount);
 
           newSides[i] = "front";
           prevCardUp = alt;
           prevCardNums.push(i);
-          console.log(prevCardUp, prevCardNums);
           return setSides(() => newSides);
         }
       }
