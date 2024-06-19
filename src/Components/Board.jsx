@@ -9,7 +9,7 @@ let prevCardNums = [];
 let match = false;
 let rounds = 0;
 
-console.log("Themes : ", themes["Tropical"]);
+
 //Unshuffled array of image data: this is static data and so stays outside of the function component
 // const unshuffledImages = themes["Tropical"];
 
@@ -17,17 +17,18 @@ console.log("Themes : ", themes["Tropical"]);
 
 //Ok, the problem is that we're storing the actual images in shuffledImages. We'd be better off storing an array of index numbers. 
 function shuffleImages(array) {
-  array = array.slice(1);
-  const unshuffled = [...array, ...array];
+  let nums = array; 
   let results = [];
-  //console.log("Unshuffled at start of function: ", unshuffled);
+  //console.log("Unshuffled indices at start of function: ", array);
 
-  while (unshuffled[0] !== undefined) {
-    //console.log("Unshuffled in while loop: ", [...unshuffled]);
-    let i = Math.floor(Math.random() * unshuffled.length);
-    results.push(unshuffled[i]);
-    unshuffled.splice(i, 1);
+  while (array[0] !== undefined) {
+    //console.log("Unshuffled indices in while loop: ", [...array]);
+    let i = Math.floor(Math.random() * array.length);
+    results.push(array[i]);
+    array.splice(i, 1);
   }
+  //console.log(`Unshuffled array: ${nums}`)
+  //console.log("Shuffled images: " + results)
   return results;
 }
 
@@ -35,14 +36,20 @@ function shuffleImages(array) {
 
 function Board() {
   let [theme, setTheme] = useState(() => "Tropical");
-  let unshuffledImages = themes[theme];
+  //let unshuffledImages = themes[theme];
   //const shuffledImages = [];
+  const unshuffledNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
-  let [shuffledImages, setShuffledImages] = useState(() => shuffleImages(unshuffledImages)
+  let [shuffledImages, setShuffledImages] = useState(() => shuffleImages(unshuffledNums)
   );
+  //console.log(`ShuffledImages: ${shuffledImages}`)
+  //console.log(`Theme: ${theme}. Theme array: ${themes[theme][1]["icon"]}`)
 
   let initialSides = Array(shuffledImages.length).fill("back");
   let [sides, setSides] = useState(initialSides);
+  //themeArray is the array in the themes object whose key is the current theme name
+  const themeArray = themes[theme];
+  //console.log("Theme array: " + themeArray);
 
   function done() {
     return sides.includes("back") ? false : true;
@@ -152,15 +159,19 @@ function Board() {
 
   //Generate an array of <Card /> components from shuffled array, giving each one an image icon and a clickHandler; done once at start of round
   //  individual cards re-render as clicked
-  const cardArray = shuffledImages.map((image, i) => {
+  const cardArray = shuffledImages.map((num, i) => {
+
+    const currImage = themeArray[num];
+    const { icon, alt } = currImage; 
+  
     return (
       <Card
         side={sides[i]} //"back" or "front"
-        picture={image.icon}
-        backPattern={unshuffledImages[0]}
-        alt={image.alt}
+        icon={icon}
+        alt={alt}
         key={i}
-        onClick={() => handleClick(i, image.alt)}
+        onClick={() => handleClick(i, alt)}
+        backPattern={themeArray[0]}
       />
     );
   });
