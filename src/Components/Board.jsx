@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Card from "./Card";
-import themes from "./CardSets";
+import themes from "./Themes";
 import ThemeButton from "./ThemeButton";
+import Dashboard from "./Dashboard";
+import ResetButton from "./ResetButton"
 
 let clickCount = 0;
 let prevCardUp = "";
@@ -10,53 +12,49 @@ let match = false;
 let rounds = 0;
 
 
-//Unshuffled array of image data: this is static data and so stays outside of the function component
-// const unshuffledImages = themes["Tropical"];
-
-//shuffleImages takes the array of unshuffled images and adds two copies of each in random order to a new array
-
-//Ok, the problem is that we're storing the actual images in shuffledImages. We'd be better off storing an array of index numbers. 
-function shuffleImages(array) {
-  let nums = array; 
-  let results = [];
-  //console.log("Unshuffled indices at start of function: ", array);
-
-  while (array[0] !== undefined) {
-    //console.log("Unshuffled indices in while loop: ", [...array]);
-    let i = Math.floor(Math.random() * array.length);
-    results.push(array[i]);
-    array.splice(i, 1);
-  }
-  //console.log(`Unshuffled array: ${nums}`)
-  //console.log("Shuffled images: " + results)
-  return results;
-}
-
 //Invokes shuffleCards to create an array of shuffled image data that can be used to create cards
 
 function Board() {
+  //Theme is the chosen set of card images, corresponding to the keys in the themes object. 
+
   let [theme, setTheme] = useState(() => "Tropical");
-  //let unshuffledImages = themes[theme];
-  //const shuffledImages = [];
+ 
+  // unshuffledNums contains each number 1-18 twice (36 nums total). These are the index numbers of the card images in the array of images for each them. Each number occurs twice in order to add a matching pair of each image to the game. Index numbers start from 1 because the first image in the array for each theme is the back-of-card pattern. 
+
   const unshuffledNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
-  let [shuffledImages, setShuffledImages] = useState(() => shuffleImages(unshuffledNums)
+  // shuffleCardIndices shuffles the numbers in the unshuffledNums array into random order. 
+
+  function shuffleCardIndices(array) {
+    let results = [];
+
+    while (array[0] !== undefined) {
+      let i = Math.floor(Math.random() * array.length);
+      results.push(array[i]);
+      array.splice(i, 1);
+    }
+    return results;
+  }
+
+  // shuffledCardIndices is the array of randomized numbers 1-18 used as indices for the cards in the theme array. Currently does not need to be state, but probably needs to be state for future planned features. 
+  let [shuffledCardIndices, setShuffledCardIndices] = useState(() => shuffleCardIndices(unshuffledNums)
   );
-  //console.log(`ShuffledImages: ${shuffledImages}`)
-  //console.log(`Theme: ${theme}. Theme array: ${themes[theme][1]["icon"]}`)
 
-  let initialSides = Array(shuffledImages.length).fill("back");
+  // The "sides" state variable holds an array of string values to track whether each card is face up("front") or face down("back"). "initialSides" creates an array with a "back" value for each card, which is used for the initial state of the gameboard. 
+  let initialSides = Array(shuffledCardIndices.length).fill("back");
   let [sides, setSides] = useState(initialSides);
-  //themeArray is the array in the themes object whose key is the current theme name
-  const themeArray = themes[theme];
-  //console.log("Theme array: " + themeArray);
 
+  // The data for each visual theme is held in the themes object, with the theme name as the key and an array of image data as the value. The themeArray variable has the value of the array of image data for the currently selected theme. 
+  const themeArray = themes[theme];
+
+  // Calculates whether all matches have been found, ending the game.
   function done() {
     return sides.includes("back") ? false : true;
   }
 
   let isDone = done();
 
+  // The findStatus function returns a message for the player about the state of the game.
   function findStatus() {
     if (rounds <= 1 && clickCount < 2) {
       return "";
@@ -72,7 +70,8 @@ function Board() {
 
   let status = findStatus();
 
-  const handleClick = (i, alt) => {
+  //Handles clicks on game cards
+  const handleCardClick = (i, alt) => {
     clickCount++;
     let newSides = sides.slice();
     console.log("Clickcount: ", clickCount);
@@ -157,9 +156,9 @@ function Board() {
     }
   };
 
-  //Generate an array of <Card /> components from shuffled array, giving each one an image icon and a clickHandler; done once at start of round
-  //  individual cards re-render as clicked
-  const cardArray = shuffledImages.map((num, i) => {
+  //Generate an array of <Card /> components, using the randomized numbers in shuffledCardIndices to access the image data in themeArray. 
+
+  const cardArray = shuffledCardIndices.map((num, i) => {
 
     const currImage = themeArray[num];
     const { icon, alt } = currImage; 
@@ -170,40 +169,41 @@ function Board() {
         icon={icon}
         alt={alt}
         key={i}
-        onClick={() => handleClick(i, alt)}
+        onClick={() => handleCardClick(i, alt)}
         backPattern={themeArray[0]}
       />
     );
   });
 
-  //Generate array of ThemeButton components to allow user to change card theme
-  let themeNames = Object.keys(themes);
-
-  function themeChanger(themeName) {
-    console.log("I clicked a theme button: " + themeName);
+  
+  // Handles clicks on ThemeButton components. 
+  function themeButtonClickHandler(themeName) {
     if (theme === themeName) {
       return;
     }
     setTheme(themeName);
-    //setShuffledImages(() => shuffleImages(unshuffledImages));
   }
-
+  
+  // Get names of all themes from themes object
+  let themeNames = Object.keys(themes);
+  
+  //Generate array of ThemeButton components to display the available card themes and allow the user to change the current theme.
   const themeButtonArray = themeNames.map((themeName, i) => {
     return (
       <ThemeButton
         themeName={themeName}
         key={i}
-        clickHandler={() => themeChanger(themeName)}
+        clickHandler={() => themeButtonClickHandler(themeName)}
       />
     );
   });
 
-
+  // Returns game board with cards, status display, and theme picker buttons. 
   return (
     <div>
-      <div id="dashboard">
-        <h1>{status}</h1>
-        <h1>Rounds: {rounds}</h1>
+      <div id="header">
+        <Dashboard rounds={rounds} status={status}/>
+        <ResetButton/>
       </div>
       <div>{cardArray}</div>
       <div>{themeButtonArray}</div>

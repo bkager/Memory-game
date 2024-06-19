@@ -27,7 +27,6 @@ A Vite React app.
 
 ### Bugs
 
-- Fix rendering issue when changing themes
 - Add new game button
 
 ### New Features and Improvements
@@ -42,6 +41,8 @@ A Vite React app.
 - Two-player mode
 - Online mode
 - Fix linting issues in markdown
+- Move Dashboard at top into own component
+- Create header containing dashboard and new game button
 
 ### Changelog
 
