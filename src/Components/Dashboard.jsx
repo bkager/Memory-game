@@ -1,11 +1,11 @@
 import ResetButton from "./ResetButton";
 
-function Dashboard ({rounds, status}) {
+function Dashboard ({rounds, status, newGameClickHandler}) {
   return (
     <div id="dashboard">
         <button>Rounds: {rounds}</button>
         <button>{status}</button>
-        <ResetButton />
+        <ResetButton newGameClickHandler={newGameClickHandler}/>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-function ResetButton () {
+function ResetButton ({ newGameClickHandler }) {
   return (
-    <button>
+    <button onClick={newGameClickHandler}>
       New Game
     </button>
   )

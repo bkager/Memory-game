@@ -1,6 +1,6 @@
 
 const themes = {
-  Tropical: [
+  tropical: [
     "./images/tropical/waves.png",
     { icon: "/images/tropical/bird-of-paradise.png", alt: "Bird of Paradise" },
     { icon: "/images/tropical/butterfly.png", alt: "butterfly" },
@@ -21,7 +21,7 @@ const themes = {
     { icon: "/images/tropical/starfish.png", alt: "starfish" },
     { icon: "/images/tropical/tropical-fish.png", alt: "tropical fish" },
   ],
-  Halloween: [
+  halloween: [
     "./images/halloween/glitter.png",
     { icon: "/images/halloween/bat.png", alt: "bat" },
     { icon: "/images/halloween/black-cat.png", alt: "black cat" },
@@ -45,7 +45,7 @@ const themes = {
     { icon: "/images/halloween/werewolf.png", alt: "werewolf" },
     { icon: "/images/halloween/witch-hat.png", alt: "witch-hat" },
   ],
-  Space: [
+  space: [
     "/images/space/stars.png",
     { icon: "/images/space/alien.png", alt: "alien" },
     { icon: "/images/space/astronaut.png", alt: "astronaut" },
@@ -65,6 +65,27 @@ const themes = {
     { icon: "/images/space/ufo-1.png", alt: "ufo" },
     { icon: "/images/space/jupiter.png", alt: "jupiter" },
     { icon: "/images/space/ufo.png", alt: "ufo" }
+  ],
+  bakery: [
+    "public/images/bakery/roll-out.png",
+    { icon: "/images/bakery/biscuit.png", alt: "biscuit" },
+    { icon: "/images/bakery/bread.png", alt: "bread" },
+    { icon: "/images/bakery/cake-pop.png", alt: "cake pop" },
+    { icon: "/images/bakery/carrot-cake.png", alt: "carrot cake" },
+    { icon: "/images/bakery/cinnamon-roll.png", alt: "cinnamon roll" },
+    { icon: "/images/bakery/cookies.png", alt: "cookies" },
+    { icon: "/images/bakery/croissant.png", alt: "croissant" },
+    { icon: "/images/bakery/crostata.png", alt: "pie" },
+    { icon: "/images/bakery/cupcake.png", alt: "cupcake" },
+    { icon: "/images/bakery/doughnut.png", alt: "doughnut" },
+    { icon: "/images/bakery/fairy-bread.png", alt: "fairy bread" },
+    { icon: "/images/bakery/glove.png", alt: "oven mitt" },
+    { icon: "/images/bakery/macaron.png", alt: "macaron" },
+    { icon: "/images/bakery/mooncake.png", alt: "moon cake" },
+    { icon: "/images/bakery/panna-cotta.png", alt: "panna cotta" },
+    { icon: "/images/bakery/pretzel.png", alt: "pretzel" },
+    { icon: "/images/bakery/roll-cake.png", alt: "roll cake" },
+    { icon: "/images/bakery/whisk.png", alt: "whisk" },
   ],
 };
 

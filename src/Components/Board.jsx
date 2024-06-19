@@ -3,7 +3,6 @@ import Card from "./Card";
 import themes from "./Themes";
 import ThemeButton from "./ThemeButton";
 import Dashboard from "./Dashboard";
-import ResetButton from "./ResetButton"
 
 let clickCount = 0;
 let prevCardUp = "";
@@ -17,9 +16,9 @@ let rounds = 0;
 function Board() {
   //Theme is the chosen set of card images, corresponding to the keys in the themes object. 
 
-  let [theme, setTheme] = useState(() => "Tropical");
+  let [theme, setTheme] = useState(() => "tropical");
  
-  // unshuffledNums contains each number 1-18 twice (36 nums total). These are the index numbers of the card images in the array of images for each them. Each number occurs twice in order to add a matching pair of each image to the game. Index numbers start from 1 because the first image in the array for each theme is the back-of-card pattern. 
+  // unshuffledNums contains each number 1-18 twice (36 numbers total). These are the index numbers of the card images in the array of images for each theme. Each number occurs twice in order to add a matching pair of each image to the game. Index numbers start from 1 because the first image in the array for each theme is the back-of-card pattern. 
 
   const unshuffledNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
@@ -40,7 +39,7 @@ function Board() {
   let [shuffledCardIndices, setShuffledCardIndices] = useState(() => shuffleCardIndices(unshuffledNums)
   );
 
-  // The "sides" state variable holds an array of string values to track whether each card is face up("front") or face down("back"). "initialSides" creates an array with a "back" value for each card, which is used for the initial state of the gameboard. 
+  // The "sides" state variable holds an array of string values to track whether each card is face up("front") or face down("back"). "initialSides" creates an array with a "back" value for each card, which is used for the initial state of the gameboard and for resets. 
   let initialSides = Array(shuffledCardIndices.length).fill("back");
   let [sides, setSides] = useState(initialSides);
 
@@ -69,6 +68,14 @@ function Board() {
   }
 
   let status = findStatus();
+
+  // Reset the game board
+  function newGameClickHandler () {
+    status = "New game";
+    rounds = 0; 
+    setShuffledCardIndices(()=> shuffleCardIndices(unshuffledNums));
+    setSides(() => (initialSides)); 
+  }
 
   //Handles clicks on game cards
   const handleCardClick = (i, alt) => {
@@ -202,7 +209,7 @@ function Board() {
   return (
     <div>
       <div id="header">
-        <Dashboard rounds={rounds} status={status}/>
+        <Dashboard rounds={rounds} status={status} newGameClickHandler={newGameClickHandler}/>
       </div>
       <div id="cardLayout">{cardArray}</div>
       <div id="theme-bar">
