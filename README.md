@@ -28,6 +28,7 @@ A Vite React app.
 ### Bugs
 
 - Fix rendering issue when changing themes
+- Add new game button
 
 ### New Features and Improvements
 

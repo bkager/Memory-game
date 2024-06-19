@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "./Card";
 import themes from "./CardSets";
 import ThemeButton from "./ThemeButton";
@@ -13,15 +13,17 @@ console.log("Themes : ", themes["Tropical"]);
 //Unshuffled array of image data: this is static data and so stays outside of the function component
 // const unshuffledImages = themes["Tropical"];
 
-//shuffleImages takes the array of unshuffled images and adds two copies of each in random order to a new array,
+//shuffleImages takes the array of unshuffled images and adds two copies of each in random order to a new array
+
+//Ok, the problem is that we're storing the actual images in shuffledImages. We'd be better off storing an array of index numbers. 
 function shuffleImages(array) {
   array = array.slice(1);
   const unshuffled = [...array, ...array];
   let results = [];
-  console.log("Unshuffled at start of function: ", unshuffled);
+  //console.log("Unshuffled at start of function: ", unshuffled);
 
   while (unshuffled[0] !== undefined) {
-    console.log("Unshuffled in while loop: ", [...unshuffled]);
+    //console.log("Unshuffled in while loop: ", [...unshuffled]);
     let i = Math.floor(Math.random() * unshuffled.length);
     results.push(unshuffled[i]);
     unshuffled.splice(i, 1);
@@ -32,12 +34,11 @@ function shuffleImages(array) {
 //Invokes shuffleCards to create an array of shuffled image data that can be used to create cards
 
 function Board() {
-  let [theme, setTheme] = useState("Tropical");
+  let [theme, setTheme] = useState(() => "Tropical");
   let unshuffledImages = themes[theme];
   //const shuffledImages = [];
 
-  let [shuffledImages, setShuffledImages] = useState(
-    shuffleImages(unshuffledImages)
+  let [shuffledImages, setShuffledImages] = useState(() => shuffleImages(unshuffledImages)
   );
 
   let initialSides = Array(shuffledImages.length).fill("back");
@@ -151,29 +152,6 @@ function Board() {
 
   //Generate an array of <Card /> components from shuffled array, giving each one an image icon and a clickHandler; done once at start of round
   //  individual cards re-render as clicked
-
-  //Generate array of ThemeButton components to allow user to change card theme
-  let themeNames = Object.keys(themes);
-
-  function themeChanger(themeName) {
-    console.log("I clicked a theme button");
-    if (theme === themeName) {
-      return;
-    }
-    setTheme(themeName);
-    setShuffledImages(() => shuffleImages(unshuffledImages));
-  }
-
-  const themeButtonArray = themeNames.map((themeName, i) => {
-    return (
-      <ThemeButton
-        themeName={themeName}
-        key={i}
-        clickHandler={() => themeChanger(themeName)}
-      />
-    );
-  });
-
   const cardArray = shuffledImages.map((image, i) => {
     return (
       <Card
@@ -186,6 +164,29 @@ function Board() {
       />
     );
   });
+
+  //Generate array of ThemeButton components to allow user to change card theme
+  let themeNames = Object.keys(themes);
+
+  function themeChanger(themeName) {
+    console.log("I clicked a theme button: " + themeName);
+    if (theme === themeName) {
+      return;
+    }
+    setTheme(themeName);
+    //setShuffledImages(() => shuffleImages(unshuffledImages));
+  }
+
+  const themeButtonArray = themeNames.map((themeName, i) => {
+    return (
+      <ThemeButton
+        themeName={themeName}
+        key={i}
+        clickHandler={() => themeChanger(themeName)}
+      />
+    );
+  });
+
 
   return (
     <div>

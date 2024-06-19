@@ -1,7 +1,6 @@
-import React from "react";
 
-function ThemeButton(props) {
-  return <button onClick={props.clickHandler}>{props.themeName}</button>;
+function ThemeButton( { clickHandler, themeName}) {
+  return <button onClick={clickHandler}>{themeName}</button>;
 }
 
 export default ThemeButton;
