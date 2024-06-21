@@ -4,7 +4,7 @@ function Dashboard ({rounds, status, newGameClickHandler}) {
   return (
     <div id="dashboard">
         <button>Rounds: {rounds}</button>
-        <button>{status}</button>
+        <button id="statusButton">{status}</button>
         <ResetButton newGameClickHandler={newGameClickHandler}/>
     </div>
   )

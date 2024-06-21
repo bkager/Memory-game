@@ -55,15 +55,11 @@ function Board() {
 
   // The findStatus function returns a message for the player about the state of the game.
   function findStatus() {
-    if (rounds <= 1 && clickCount < 2) {
-      return "Play!";
-    }
     if (isDone) {
-      return "Success! You found all matches!";
-    } else if (!match) {
-      return "No match :(";
-    } else if (match) {
-      return "Match found! :)";
+      return "All matches found!";
+    }
+    else {
+      return "Memory"
     }
   }
 
@@ -188,6 +184,7 @@ function Board() {
   const themeButtonArray = themeNames.map((themeName, i) => {
     return (
       <ThemeButton
+        className="themeButton" 
         themeName={themeName}
         key={i}
         clickHandler={() => themeButtonClickHandler(themeName)}
@@ -197,13 +194,13 @@ function Board() {
 
   // Returns game board with cards, status display, and theme picker buttons. 
   return (
-    <div>
+    <div id="gameboard">
       <div id="header">
         <Dashboard rounds={rounds} status={status} newGameClickHandler={newGameClickHandler}/>
       </div>
       <div id="cardLayout">{cardArray}</div>
       <div id="theme-bar">
-        <div>{themeButtonArray}</div>
+        <div id="theme-button-array">{themeButtonArray}</div>
       </div>
     </div>
   );
