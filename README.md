@@ -8,47 +8,12 @@ A simple singleplayer memory challenge.
 - Keeps track of number of moves
 - Multiple visual themes
 
-## How to Use
-
-Download the Github repo. From the project's root, run:
-
-```javascript
-npm install
-npm run dev
-```
-
-Game will run in browser.
 
 ## Technologies
 
 A Vite React app.
 
 ## To Do
-
-### Bugs
-
-- Add new game button
-
-### New Features and Improvements
-
-- Improve CSS
-  - add grid for cards
-  - improve fonts
-- add TypeScript
-- Button to reset board
-- Bomb mode: Two cards picturing bombs are included. If you've turned a bomb card over once, the next time you flip it it explodes. Game over/lose points.
-- Button to flip all cards, marking ones you didn't get
-- Two-player mode
-- Online mode
-- Fix linting issues in markdown
-- Move Dashboard at top into own component
-- Create header containing dashboard and new game button
-
-### Changelog
-
-- Added button to toggle different themes for cards
-- Added Halloween theme
-- Organized/expanded Readme file
 
 ## Attributions
 
